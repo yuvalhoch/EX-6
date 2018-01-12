@@ -1,7 +1,6 @@
 package sample;
 
 import sample.Cell;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Vector;
@@ -31,11 +30,11 @@ public class HumanP implements GeneralPlayer{
     }
 
     public Vector<Cell> getMovesForPlayer(Board gameBoard, char sign) {
-        Vector<Cell> movesForCurrentPlayer = null;
+        Vector<Cell> movesForCurrentPlayer = new Vector<>();
         //finding out all locations of the current player on the board
         Vector<Point> locations = getLocationsOfPlayerOnBoard(sign, gameBoard);
-        Vector<Point> movesPoints = null;
-        Vector<Cell> movesNoDuplicates = null;
+        Vector<Point> movesPoints = new Vector<>();;
+        Vector<Cell> movesNoDuplicates = new Vector<>();;
         boolean add = true;
         //for each location of the current player -
         for (int i = 0; i < locations.size(); i++) {
@@ -62,7 +61,7 @@ public class HumanP implements GeneralPlayer{
         for (int point = 0; point < movesPoints.size(); point++) {
             int pointX = movesPoints.get(point).x;
             int pointY = movesPoints.get(point).y;
-            Vector<Point> sharedPoints = null;
+            Vector<Point> sharedPoints = new Vector<>();;
             /*for (int i = 0; i < movesForCurrentPlayer.size(); i++) {
                 if ((movesForCurrentPlayer.get(i).x == pointX) && (movesForCurrentPlayer.get(i).y == pointY)) {
                     sharedPoints.insert(sharedPoints.end(),
@@ -101,8 +100,8 @@ public class HumanP implements GeneralPlayer{
     }
 
     public Vector<Cell> possibleMovesForOneDisk(char current, Point point, Board gameBoard) {
-        Vector<Cell> possibleMoves = null;
-        Vector<Point> flippingPoints = null;
+        Vector<Cell> possibleMoves = new Vector<>();;
+        Vector<Point> flippingPoints = new Vector<>();;
         //first checking the upper row left to right,
         // mid row left and right, lower row left to right
         for (int vertical = -1; vertical < 2; vertical++) {
@@ -137,7 +136,7 @@ public class HumanP implements GeneralPlayer{
                         possibleMoves.add(possibleMove);
                     }
                 }
-                flippingPoints.clear();
+                //flippingPoints.clear();
                 //use the back ups to set them back to original,
                 //so the changes wont harm the loop
                 vertical = verBackUp;
