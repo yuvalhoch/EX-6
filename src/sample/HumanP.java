@@ -118,8 +118,8 @@ public class HumanP implements GeneralPlayer{
     }
 
     public Vector<Cell> possibleMovesForOneDisk(char current, Point point, Board gameBoard) {
-        Vector<Cell> possibleMoves = new Vector<>();;
-        Vector<Point> flippingPoints = new Vector<>();;
+        Vector<Cell> possibleMoves = new Vector<>();
+        Vector<Point> flippingPoints = new Vector<>();
         //first checking the upper row left to right,
         // mid row left and right, lower row left to right
         for (int vertical = -1; vertical < 2; vertical++) {
@@ -154,7 +154,8 @@ public class HumanP implements GeneralPlayer{
                         possibleMoves.add(possibleMove);
                     }
                 }
-                //flippingPoints.clear();
+
+                flippingPoints = new Vector<>();
                 //use the back ups to set them back to original,
                 //so the changes wont harm the loop
                 vertical = verBackUp;
