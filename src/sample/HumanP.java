@@ -33,8 +33,8 @@ public class HumanP implements GeneralPlayer{
         Vector<Cell> movesForCurrentPlayer = new Vector<>();
         //finding out all locations of the current player on the board
         Vector<Point> locations = getLocationsOfPlayerOnBoard(sign, gameBoard);
-        Vector<Point> movesPoints = new Vector<>();;
-        Vector<Cell> movesNoDuplicates = new Vector<>();;
+        Vector<Point> movesPoints = new Vector<>();
+        Vector<Cell> movesNoDuplicates = new Vector<>();
         boolean add = true;
         //for each location of the current player -
         for (int i = 0; i < locations.size(); i++) {
@@ -54,21 +54,40 @@ public class HumanP implements GeneralPlayer{
                 if (add == true) {
                     movesPoints.add(p);
                 }
-
                 movesForCurrentPlayer.add(possibleMoves.get(move));
             }
         }
-        for (int point = 0; point < movesPoints.size(); point++) {
+        if (!movesForCurrentPlayer.isEmpty()) {
+            movesNoDuplicates.add(movesForCurrentPlayer.get(0));
+        }
+        for (int i = 1; i < movesForCurrentPlayer.size();  i++) {
+            int flag = 0;
+            Cell c = movesForCurrentPlayer.get(i);
+            int x = c.x;
+            int y = c.y;
+            for (int j = 0; j < movesNoDuplicates.size(); j++) {
+                if (movesNoDuplicates.get(j).x == x && movesNoDuplicates.get(j).y == y) {
+                    for (int n = 0; n < c.flip.size(); n++) {
+                        movesNoDuplicates.get(j).flip.add(c.flip.get(n));
+                    }
+                    flag = 1;
+                }
+            }
+            if (flag == 0) {
+                movesNoDuplicates.add(c);
+            }
+        }
+        /*for (int point = 0; point < movesPoints.size(); point++) {
             int pointX = movesPoints.get(point).x;
             int pointY = movesPoints.get(point).y;
-            Vector<Point> sharedPoints = new Vector<>();;
-            /*for (int i = 0; i < movesForCurrentPlayer.size(); i++) {
+            Vector<Point> sharedPoints = new Vector<>();
+            for (int i = 0; i < movesForCurrentPlayer.size(); i++) {
                 if ((movesForCurrentPlayer.get(i).x == pointX) && (movesForCurrentPlayer.get(i).y == pointY)) {
-                    sharedPoints.insert(sharedPoints.end(),
+                    sharedPoints.add(sharedPoints.end(),
                             movesForCurrentPlayer.get(i).flip.begin(),
                             movesForCurrentPlayer.get(i).flip.end() );
                 }
-            }*/
+
             Cell c = new Cell();
             c.x = pointX;
             c.y = pointY;
@@ -76,8 +95,7 @@ public class HumanP implements GeneralPlayer{
             if (!movesNoDuplicates.contains(c)) {
                 movesNoDuplicates.add(c);
             }
-        }
-
+        }*/
         // return movesForCurrentPlayer;
         return movesNoDuplicates;
     }

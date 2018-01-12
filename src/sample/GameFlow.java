@@ -7,7 +7,7 @@ public class GameFlow {
         //as long as the game isnt over, keep switching turns
         do {
             currentGame_.nextTurn();
-        } while (!currentGame_.gameover());
+        } while (!currentGame_.gameOver());
         currentGame_.whoWon();
     }
 

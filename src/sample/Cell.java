@@ -8,4 +8,7 @@ public class Cell {
     public int y;
     //All the cells that the player flips if he choose this cell.
     Vector <Point> flip;
+    public Cell() {
+        this.flip = new Vector<>();
+    }
 }

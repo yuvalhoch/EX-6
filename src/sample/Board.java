@@ -18,6 +18,7 @@ public class Board {
         int midCol = length_ / 2;
         c = '|';
         horizontalSep_ = '-';
+        verticalSep_ = '|';
         //creating a dynamic array
         matrix_ = new ArrayList<>();
         ArrayList<Character> list;
@@ -143,4 +144,42 @@ public class Board {
     public ArrayList<ArrayList<Character>> getMatrix() {
         return this.matrix_;
     }
+
+    public void printBoard() {
+        //creating the upper border of the table
+        System.out.print(" current board is: \n");
+        for (int i = 0; i < width_; i++) {
+            int j = i + 1;
+            System.out.print(" | " + j);
+        }
+        System.out.print(" " + verticalSep_ + "\n");
+        for (int i = 0; i < width_; i++) {
+            //creating a seperator line of '-'
+            for (int j = 0; j < ((width_ * 2) + 1) * 2; j++) {
+                System.out.print(horizontalSep_);
+            }
+            System.out.print("\n");
+            for (int c = 0; c < length_; c++) {
+                //mark which line it is
+                if (c == 0) {
+                    int j = i + 1;
+                    System.out.print(j);
+                    System.out.print(verticalSep_);
+                    //if the table hold a player - print it's mark
+                }
+                if (matrix_.get(i).get(c) != ' ') {
+                    System.out.print(" " + matrix_.get(i).get(c) + " " + verticalSep_);
+                } else { //keep clear
+                    System.out.print( "   " + verticalSep_);
+                }
+            }
+            System.out.print("\n");
+        }
+        //adds the last line of '-'
+        for (int j = 0; j < ((width_ * 2) + 1) * 2; j++) {
+            System.out.print(horizontalSep_);
+        }
+        System.out.print("\n");
+    }
 }
+

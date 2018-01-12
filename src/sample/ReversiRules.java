@@ -81,7 +81,7 @@ public class ReversiRules {
         return false;
     }
 
-    public boolean gameover() {
+    public boolean gameOver() {
         GeneralPlayer temp = now_;
         if (board_.fullBoard()) {
             return true;
