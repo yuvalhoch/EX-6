@@ -1,7 +1,4 @@
-package sample;
-
-import sample.Cell;
-import sample.GeneralPlayer;
+package myapp;
 
 import java.util.Vector;
 

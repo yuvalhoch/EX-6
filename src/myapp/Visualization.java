@@ -1,7 +1,4 @@
-package sample;
-
-import sample.Board;
-import sample.Cell;
+package myapp;
 
 import java.util.Vector;
 

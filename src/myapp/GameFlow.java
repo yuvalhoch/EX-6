@@ -1,4 +1,4 @@
-package sample;
+package myapp;
 
 public class GameFlow {
     private ReversiRules currentGame_;

@@ -1,6 +1,5 @@
-package sample;
+package myapp;
 
-import sample.Cell;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Vector;

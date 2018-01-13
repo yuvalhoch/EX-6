@@ -1,6 +1,4 @@
-package sample;
-
-import sample.Cell;
+package myapp;
 
 import java.util.Vector;
 
