@@ -31,7 +31,7 @@ public class MenuController  {
 
         try {
             Stage stage = (Stage) btnStart.getScene().getWindow();
-            GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("BoardOfGame.fxml")); //doesnt exists yet !! just to remember
+            GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("FXMLBoard.fxml")); //doesnt exists yet !! just to remember
             Scene scene = new Scene(root, 700, 400); //random sizes
             stage.setTitle("Reversi Game");
             stage.setScene(scene);

@@ -83,15 +83,15 @@
             </FXCollections>
         </items>
     </ChoiceBox>
-    <HBox alignment="bottom_right"
-          GridPane.rowIndex="5" GridPane.columnIndex="1">
+    <HBox alignment="bottom_left"
+          GridPane.rowIndex="5" GridPane.columnIndex="0">
         <Button text="Save Changes" onAction="#save"/>
     </HBox>
-    <HBox alignment="bottom_right"
-          GridPane.rowIndex="6" GridPane.columnIndex="1">
+    <HBox alignment="bottom_left"
+          GridPane.rowIndex="6" GridPane.columnIndex="0">
         <Button text="Back" onAction="#back"/>
     </HBox>
     <Text fx:id="messageText"
-          GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+          GridPane.rowIndex="8" GridPane.columnIndex="0"/>
 </GridPane>
 

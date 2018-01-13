@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 
 public class SettingsController implements Initializable {
     @FXML
-    private Text messageText;
+    Text messageText;
     @FXML
     ChoiceBox<String> choiceBox1;
     @FXML
@@ -41,11 +41,14 @@ public class SettingsController implements Initializable {
     protected void save() {
         String player1Color = choiceBox1.getSelectionModel().getSelectedItem();
         String player2Color = choiceBox2.getSelectionModel().getSelectedItem();
-        String size = choiceBox3.getSelectionModel().getSelectedItem();
+
         if (player1Color.equals(player2Color)) {
             messageText.setText("You need to choose different colors!");
             messageText.setFill(Color.BLUE);
         }
+        String size = choiceBox3.getSelectionModel().getSelectedItem();
+
+
         try {
              BufferedWriter writer = new BufferedWriter(new FileWriter("src/settings.txt"));
              writer.write(player1Color);
@@ -59,7 +62,6 @@ public class SettingsController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        back();
     }
 
     @FXML
