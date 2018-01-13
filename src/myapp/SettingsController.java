@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-public class ReversiController {
+public class SettingsController {
     @FXML
     private Text messageText;
     @FXML

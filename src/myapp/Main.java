@@ -24,9 +24,17 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 300, 250));
         primaryStage.show();*/
         try {
-            GridPane root = (GridPane)FXMLLoader.load(getClass().getResource("FXMLReversi.fxml"));
+           /* GridPane root = (GridPane)FXMLLoader.load(getClass().getResource("FXMLSettings.fxml"));
             Scene scene = new Scene(root,400,350);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            primaryStage.setTitle("Reversi");
+            primaryStage.setScene(scene);
+            primaryStage.show();*/
+
+
+            GridPane root = FXMLLoader.load(getClass().getResource("FXMLMenu.fxml"));
+            Scene scene = new Scene(root,400,350);
+            //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("Reversi");
             primaryStage.setScene(scene);
             primaryStage.show();
