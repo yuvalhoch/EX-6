@@ -1,5 +1,11 @@
 package myapp;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Board {
@@ -31,10 +37,10 @@ public class Board {
             list = new ArrayList<>();
             for (int j = 0; j < length_; j++) {
                 //matrix_[i][j] = ' ';
-                if ((j == midRow - 1 && i == midCol - 1 )|| (j == midRow + 1 - 1 && i == midCol + 1 -1)) {
-                    list.add('O');
-                } else if ((j == midRow - 1 && i == midCol + 1 - 1 )|| (j == midRow + 1 - 1 && i == midCol - 1)) {
-                    list.add('X');
+                if ((j == midRow - 1 && i == midCol - 1) || (j == midRow + 1 - 1 && i == midCol + 1 - 1)) {
+                    list.add(first);
+                } else if ((j == midRow - 1 && i == midCol + 1 - 1) || (j == midRow + 1 - 1 && i == midCol - 1)) {
+                    list.add(second);
                 } else {
                     list.add(' ');
                 }
@@ -170,7 +176,7 @@ public class Board {
                 if (matrix_.get(i).get(c) != ' ') {
                     System.out.print(" " + matrix_.get(i).get(c) + " " + verticalSep_);
                 } else { //keep clear
-                    System.out.print( "   " + verticalSep_);
+                    System.out.print("   " + verticalSep_);
                 }
             }
             System.out.print("\n");

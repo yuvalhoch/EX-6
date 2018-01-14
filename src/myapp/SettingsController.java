@@ -95,21 +95,18 @@ public class SettingsController implements Initializable {
             }
             player1C = line;
             choiceBox1.setValue(line);
-
             line = reader.readLine();
             if (line == null) {
                 throw new Exception("Settings aren't valid");
             }
             player2C = line;
             choiceBox2.setValue(line);
-
             line = reader.readLine();
             if (line == null) {
                 throw new Exception("Settings aren't valid");
             }
             size = Integer.parseInt(line);
             choiceBox3.setValue(line);
-
             reader.close();
         } catch (Exception e) {
             System.out.println("couldn't read Settings file.");

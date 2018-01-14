@@ -8,15 +8,15 @@ public class ReversiRules {
     private Board board_;
     private GeneralPlayer blackP_;
     private GeneralPlayer whiteP_;
-    private Visualization screen_;
+    private BoardController boardControl_;
     private Vector<Cell> movesForCurrentPlayer;
-    public ReversiRules(GeneralPlayer black, GeneralPlayer white, Visualization screen) {
-        this.board_ = new Board(8, 8, black.getSign(), white.getSign());
+    public ReversiRules(int size, GeneralPlayer black, GeneralPlayer white, BoardController boardController) {
+        this.board_ = new Board(size, size, black.getSign(), white.getSign());
         this.whiteP_ = white;
         this.blackP_ = black;
         now_ = blackP_;
         later_ = whiteP_;
-        this.screen_ = screen;
+        this.boardControl_ = boardController;
         movesForCurrentPlayer = now_.getMovesForPlayer(this.board_, now_.getSign());
     }
 
@@ -24,14 +24,14 @@ public class ReversiRules {
         int row = 0, col = 0;
         String choice, key;
         char choiceToSend;
-        this.screen_.printOut(this.board_);
-        this.screen_.printScore(blackP_.getSign(), blackP_.getScore(),
-                whiteP_.getSign(),whiteP_.getScore());
+        this.boardControl_.draw(this.board_);
+        //this.screen_.printOut(this.board_);
+        //this.screen_.printScore(blackP_.getSign(), blackP_.getScore(), whiteP_.getSign(),whiteP_.getScore());
         //if the current player has no optional moves
         // he presses any key and the turn goes for the other player
         if (this.movesForCurrentPlayer.size() == 0) {
             //notify player he has no moves
-            this.now_.noMovesForMe(this.screen_);
+            //this.now_.noMovesForMe(this.screen_);////////////////////////////////////////////
             this.now_.passTurn();
             //switch between players and updated movesforcurrentplayer
             this.movesForCurrentPlayer.clear();
@@ -40,34 +40,35 @@ public class ReversiRules {
             return;
             //if he has moves, let him choose one of them
         } else {
-            now_.printMyOptions(this.screen_, this.movesForCurrentPlayer);
-            choice = this.now_.getNextMove(this.board_);
+            //now_.printMyOptions(this.screen_, this.movesForCurrentPlayer);
+            this.boardControl_.getNextMove(this.board_, this.movesForCurrentPlayer, this.now_.getSign(), this);
             /*if (choice == "close") {
                 this.screen_.printServerClose();
                 exit(0);
             }*/
             //if he didnt type a valid choice, make him choose again
-            while(!thisIsAOption(choice)) {
-                now_.printItsnAOption(this.screen_);
+            /*while(!thisIsAOption(choice)) {
+                //now_.printItsnAOption(this.screen_);
                 choice = new String();
                 choice = this.now_.getNextMove(this.board_);
-            }
+            }*/
             //choiceToSend = choice;
             //this.now_.sendMove(choiceToSend);
-            this.screen_.printWhichMovePlayed(now_.getSign(), choice);
-            row = choice.charAt(0) -'0' - 1;
-            col = choice.charAt(2) - '0' - 1;
-            //set his choice to have his sign
-            setPlayerDisk(row, col);
-            //flip any disks standing in the way according to rules
-            flipFrom(row, col);
-            this.movesForCurrentPlayer.clear();
-            //switch between players
-            switchPlayers();
-            this.movesForCurrentPlayer = now_.getMovesForPlayer(this.board_, now_.getSign());
+            //this.screen_.printWhichMovePlayed(now_.getSign(), choice);/////////////////////////////////////
+            /*row = choice.charAt(0) -'0' - 1;
+            col = choice.charAt(2) - '0' - 1;*/
         }
     }
-
+    public void doAfterClick(int row, int col) {
+        //set his choice to have his sign
+        setPlayerDisk(row, col);
+        //flip any disks standing in the way according to rules
+        flipFrom(row, col);
+        this.movesForCurrentPlayer.clear();
+        //switch between players
+        switchPlayers();
+        this.movesForCurrentPlayer = now_.getMovesForPlayer(this.board_, now_.getSign());
+    }
     public boolean thisIsAOption(String choice) {
         for(int i = 0; i < this.movesForCurrentPlayer.size(); i++) {
             if(choice.charAt(0) -'0' - 1 == this.movesForCurrentPlayer.get(i).x
@@ -116,11 +117,11 @@ public class ReversiRules {
         }
     }
 
-    public void whoWon() {
+    public char whoWon() {
         int scoreBlackP = blackP_.getScore();
         int scoreWhiteP = whiteP_.getScore();
         char winner;
-        this.screen_.printOut(this.board_);
+        //this.screen_.printOut(this.board_);//////////////////////////////////////////
         if (scoreBlackP > scoreWhiteP) {
             winner = blackP_.getSign();
         } else if (scoreWhiteP > scoreBlackP) {
@@ -128,8 +129,9 @@ public class ReversiRules {
         } else {
             winner = 'T';
         }
-        this.screen_.printScore(blackP_.getSign(), blackP_.getScore(), whiteP_.getSign(),whiteP_.getScore());
-        this.screen_.printWinner(winner);
+        return winner;
+        //this.screen_.printScore(blackP_.getSign(), blackP_.getScore(), whiteP_.getSign(),whiteP_.getScore());
+        //this.screen_.printWinner(winner);
 
     }
 
@@ -137,5 +139,11 @@ public class ReversiRules {
         GeneralPlayer temp = now_;
         this.now_ = later_;
         later_ = temp;
+    }
+    public char getCurrentPlayer() {
+        return this.now_.getSign();
+    }
+    public void drow() {
+        this.boardControl_.draw(this.board_);
     }
 }

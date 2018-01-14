@@ -45,18 +45,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        GeneralPlayer player1, player2;
-        Visualization screen = new Console();
-        int choice, sign;
-        //screen->openScreen();
-        //cin >> choice;
-        //create two players
-        player1 = new HumanP('X');
-        player2 = new HumanP('O');
-        //creates new game
-        GameFlow game = new GameFlow(player1, player2, screen);
-        //runs the game
-        //game.run();
         launch(args);
     }
 }

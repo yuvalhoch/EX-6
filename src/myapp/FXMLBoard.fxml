@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-
-<GridPane alignment="BASELINE_RIGHT" hgap="10" prefHeight="350.0" prefWidth="400.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myapp.BoardController">
-   <children>
-       <Label text="Player 1 score: " GridPane.rowIndex="1" />
-       <Label fx:id="p1Score" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-       <Label text="Player 2 score: " GridPane.rowIndex="2" />
-       <Label fx:id="p2Score" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-   </children>
-</GridPane>
+<fx:root type="javafx.scene.layout.GridPane"
+         xmlns:fx="http://javafx.com/fxml/1">
+</fx:root>
